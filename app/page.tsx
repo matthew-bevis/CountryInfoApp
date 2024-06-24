@@ -1,10 +1,21 @@
-import { Grid } from "@mui/material";
+'use client'
 
-export default function Home() {
+import * as React from 'react';
+import { Grid, ThemeProvider, useTheme } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import Home from './home/page';
+
+function App() {
+  const theme = useTheme();
   return (
-    <>
-      <Grid container>
-      </Grid>
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Home/>
+    </ThemeProvider>
   );
 }
+
+export default App;
+
+
+
