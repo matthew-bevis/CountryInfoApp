@@ -9,13 +9,14 @@ interface CountryCardProps {
   region: string;
   capital: string;
   flag: string;
+  alphaCode: string; // Add the alpha code
 }
 
-const CountryCard: React.FC<CountryCardProps> = ({ name, population, region, capital, flag }) => {
+const CountryCard: React.FC<CountryCardProps> = ({ name, population, region, capital, flag, alphaCode }) => {
   const theme = useTheme();
 
   return (
-    <Link href={`/country/${name.toLowerCase()}`} underline="none" sx={{ textDecoration: 'none' }}>
+    <Link href={`/country/${alphaCode}`} underline="none" sx={{ textDecoration: 'none' }}>
       <Card sx={{ height: '100%', cursor: 'pointer' }}>
         <CardMedia component="img" height="140" image={flag} alt={name} />
         <CardContent
@@ -54,6 +55,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ name, population, region, cap
 };
 
 export default CountryCard;
+
 
 
 

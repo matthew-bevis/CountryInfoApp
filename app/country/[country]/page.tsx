@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import axios from 'axios';
-import { Box, Button, Container, Typography, Grid, Card, CardMedia } from '@mui/material';
+import { Box, Button, Container, Typography, Grid, Card, CardContent, CardMedia } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const CountryDetail: React.FC = () => {
@@ -15,7 +15,7 @@ const CountryDetail: React.FC = () => {
     if (country) {
       const fetchCountryData = async () => {
         try {
-          const response = await axios.get(`https://restcountries.com/v3.1/name/${country}`);
+          const response = await axios.get(`https://restcountries.com/v3.1/alpha/${country}`);
           setCountryData(response.data[0]);
         } catch (error) {
           console.error('Error fetching country data:', error);
@@ -29,15 +29,7 @@ const CountryDetail: React.FC = () => {
   if (!countryData) return <p>Loading...</p>;
 
   const handleBorderCountryClick = (border: string) => {
-    // Fetch the full name of the border country
-    axios.get(`https://restcountries.com/v3.1/alpha/${border}`)
-      .then(response => {
-        const borderCountryName = response.data[0].name.common;
-        router.push(`/country/${borderCountryName.toLowerCase()}`);
-      })
-      .catch(error => {
-        console.error('Error fetching border country data:', error);
-      });
+    router.push(`/country/${border.toLowerCase()}`);
   };
 
   return (
@@ -113,5 +105,6 @@ const CountryDetail: React.FC = () => {
 };
 
 export default CountryDetail;
+
 
 

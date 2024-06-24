@@ -11,6 +11,7 @@ interface Country {
   region: string;
   capital: string;
   flags: { png: string };
+  cca3: string; // Add the alpha code field
 }
 
 const Home: React.FC = () => {
@@ -55,19 +56,20 @@ const Home: React.FC = () => {
         <Grid item xs={12} sm={6} md={4}>
           <SearchBar searchValue={searchValue} onSearchChange={handleSearchChange} />
         </Grid>
-        <Grid item xs={12} sm={6} md={4} sx={{justifyContent: 'flex-end' }}>
+        <Grid item xs={12} sm={6} md={4} sx={{ justifyContent: 'flex-end' }}>
           <Filter region={region} onRegionChange={handleRegionChange} />
         </Grid>
       </Grid>
       <Grid container spacing={3}>
         {filteredCountries.map((country) => (
-          <Grid item key={country.name.common} xs={12} sm={6} md={4} lg={3}>
+          <Grid item key={country.cca3} xs={12} sm={6} md={4} lg={3}>
             <CountryCard
               name={country.name.common}
               population={country.population}
               region={country.region}
               capital={country.capital}
               flag={country.flags.png}
+              alphaCode={country.cca3} // Pass the alpha code to the card
             />
           </Grid>
         ))}
@@ -77,5 +79,6 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
 
 
