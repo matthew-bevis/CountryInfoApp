@@ -95,7 +95,7 @@ const CountryDetail: React.FC = () => {
                     {border}
                   </Button>
                 </Grid>
-              )) : 'None'}
+              )) : <Typography variant="body1" sx={{ml: 1}}>None</Typography>}
             </Grid>
           </Box>
         </Grid>

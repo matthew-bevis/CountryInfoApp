@@ -28,7 +28,7 @@ const Header = () => {
             Where in the world?
           </Link>
         </Grid>
-        <Grid item>
+        <Grid item sx={{mr:2}}>
           <ToggleButton />
         </Grid>
       </Grid>
